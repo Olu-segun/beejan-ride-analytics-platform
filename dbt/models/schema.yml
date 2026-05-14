@@ -1,0 +1,15 @@
+
+version: 2
+
+models:
+  - name: staging_cities
+    description: "This model is responsible for staging the cities data from the raw layer.
+        It performs basic transformations such as renaming columns, converting data types, and handling missing values to prepare the data for further analysis."
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+
+  

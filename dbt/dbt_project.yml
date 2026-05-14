@@ -1,0 +1,33 @@
+name: 'beejan_ride_analytics'
+version: '1.0.0'
+
+config-version: 2
+
+profile: 'beejan_ride_dbt'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:     
+  - "target"
+  - "dbt_packages"
+
+models:
+  beejan_ride_analytics:
+
+    staging:
+      +schema: staging
+      +materialized: table
+      
+    intermediate:
+      +schema: intermediate
+      +materialized: table
+      
+    marts:
+      +schema: marts
+      +materialized: table
+      
