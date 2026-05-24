@@ -101,6 +101,7 @@ Contains reusable business logic and derived metrics.
 - duplicate payment detection
 
 Reusable macros were created to standardize calculations and improve maintainability.
+
 ---
 
 ### Marts Layer
@@ -131,18 +132,21 @@ Implemented SCD Type 2 snapshots for drivers.
 Snapshotting enables historical tracking of driver state changes over time.
 
 ---
-## Incremental Models
+
+## *Incremental Models*
 Incremental materialization was implemented for high-volume datasets such as:
 driver_status_events, trips and payments
 
-## Why Incremental Models?
+### Why Incremental Models?
 Incremental models reduce processing time and warehouse costs by only loading new or updated records instead of rebuilding entire tables.
+
+---
 
 ## Tradeoffs
 | Full Refresh	  | Incremental                           |
 |-----------------|---------------------------------------|
 | Simpler logic	  | Faster execution                      |
-| Higher compute  |  cost	Lower compute cost            |
+| Higher compute  | cost Lower compute cost            |
 | Rebuilds entire | dataset	Processes only changes        |
 | Better for small| datasets	Better for large datasets |
 
