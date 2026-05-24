@@ -15,52 +15,18 @@ The platform ingests transactional ride data from a PostgreSQL operational datab
 
 ---
 Architecture
-```text
-                +----------------------+
-                | PostgreSQL Source DB |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |       Airbyte        |
-                |   Data Ingestion     |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |      Snowflake       |
-                |      RAW Layer       |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |         dbt          |
-                | Data Transformations |
-                +----------+-----------+
-                           |
-         +-----------------+-----------------+
-         |                 |                 |
-         v                 v                 v
-   STAGING           INTERMEDIATE         MARTS
-         |                                   |
-         +-----------------+-----------------+
-                           |
-                           v
-                +----------------------+
-                |     BI / Analytics   |
-                | Dashboards & Reports |
-                +----------------------+
-```
 ---
-Technology Stack
-Tool	Purpose
-Airbyte	Data ingestion
-dbt	Data modeling and transformation
-Snowflake	Cloud data warehouse
-Apache Airflow	Pipeline orchestration
-Docker	Containerization
-Git & GitHub	Version control
-PostgreSQL	Source transactional database
+Technology Stack:
+
+| Tool           |	Purpose                         |
+|----------------|----------------------------------|
+| PostgreSQL     |	Source transactional database   |
+| Airbyte        |  Data ingestion                  |
+| dbt            |  Data modeling and transformation|
+| Snowflake      |  Cloud data warehouse            |
+| Apache Airflow |  Pipeline orchestration          |
+| Git & GitHub   |  Version control                 |
+
 ---
 ## Project Structure
 ```bash
@@ -82,20 +48,19 @@ beejan-ride-analytics/
 │   ├── dbt_project.yml
 │   └── profiles.yml
 │
-├── docker-compose.yml
 ├── requirements.txt
 └── README.md
 ```
 ---
 ## Data Flow
-Transactional ride data is generated in PostgreSQL.
-Airbyte extracts and loads raw tables into the Snowflake `RAW` schema.
-dbt transforms the raw data into:
-Staging models
-Intermediate business logic models
-Fact and dimension marts
-Apache Airflow orchestrates ingestion and transformation workflows.
-Final marts support BI dashboards and analytics reporting.
+- Transactional ride data is generated in PostgreSQL.
+- Airbyte extracts and loads raw tables into the Snowflake `RAW` schema.
+- dbt transforms the raw data into:
+- Staging models
+- Intermediate business logic models
+- Fact and dimension marts
+- Apache Airflow orchestrates ingestion and transformation workflows.
+- Final marts support BI dashboards and analytics reporting.
 ---
 ## Layered Modeling Approach
 ### Raw Layer
@@ -141,15 +106,15 @@ Implements a star schema for analytics consumption.
 - dim_riders
 - dim_cities
 - dim_date
-The marts layer powers reporting and dashboarding use cases.
+    - The marts layer powers reporting and dashboarding use cases.
 ---
 Snapshots
 Implemented SCD Type 2 snapshots for drivers.
 Tracked changes:
-driver_status
-vehicle_id
-rating
-Snapshotting enables historical tracking of driver state changes over time.
+- driver_status
+- vehicle_id
+- rating
+- Snapshotting enables historical tracking of driver state changes over time.
 
 ---
 ## Incremental Models
