@@ -117,6 +117,7 @@ Implements a star schema for analytics consumption.
 - dim_date
 
 The marts layer powers reporting and dashboarding use cases.
+
 ---
 
 ### Snapshots
