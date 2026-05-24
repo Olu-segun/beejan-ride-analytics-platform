@@ -1,6 +1,6 @@
 # BeejanRide Analytics Platform
 
-## 📌 Project Overview
+## 📌 *Project Overview*
 BeejanRide is a UK-based mobility startup providing ride-hailing, airport transfers, and scheduled corporate rides across multiple cities. This project implements a production-grade analytics engineering platform using the modern data stack.
 
 The platform ingests transactional ride data from a PostgreSQL operational database into a cloud data warehouse using Airbyte, transforms and models the data using dbt, and orchestrates workflows using Apache Airflow.
