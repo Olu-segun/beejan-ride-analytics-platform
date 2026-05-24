@@ -65,7 +65,8 @@ beejan-ride-analytics/
 ## Layered Modeling Approach
 ### Raw Layer
 Contains ingested source data from Airbyte without modifications.
-**Examples:**
+
+*Examples:*
 - trips_raw
 - drivers_raw
 - riders_raw
@@ -73,20 +74,24 @@ Contains ingested source data from Airbyte without modifications.
 ---
 ### Staging Layer
 The staging layer standardizes and cleans raw data.
-**Transformations include:*
+
+*Transformations include:*
 - Column renaming to snake_case
 - Data type casting
 - Deduplication
 - Timestamp standardization
 - Null primary key removal
-#### Examples:
-stg_trips
-stg_drivers
-stg_payments
+
+*Examples:*
+- stg_trips
+- stg_drivers
+- stg_payments
+
 ---
 ### Intermediate Layer
 Contains reusable business logic and derived metrics.
-Implemented logic includes:
+
+*Implemented logic includes:*
 - trip_duration_minutes
 - rider_lifetime_value
 - driver_lifetime_trips
@@ -98,10 +103,12 @@ Implemented logic includes:
 ---
 ### Marts Layer
 Implements a star schema for analytics consumption.
-##### Fact Tables
+
+*Fact Tables:*
 - fact_trips
 - fact_payments
-##### Dimension Tables
+
+*Dimension Tables:*
 - dim_drivers
 - dim_riders
 - dim_cities
