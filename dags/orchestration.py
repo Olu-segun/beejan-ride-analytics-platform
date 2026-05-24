@@ -20,14 +20,22 @@ with DAG(
         asynchronous=False,
         timeout=3600
     )
+    
+    check_freshness = BashOperator(
+    task_id="check_freshness",
+    bash_command="""
+    cd /opt/airflow/dbt &&
+    dbt source freshness --profiles-dir .
+    """
+)
 
     run_dbt = BashOperator(
-        task_id="run_dbt",
-        bash_command="""
-        cd /opt/airflow/dbt &&
-        rm -rf target &&
-        dbt build --profiles-dir .
-        """,
-    )
-
-    sync_data >> run_dbt
+    task_id="run_dbt",
+    bash_command="""
+    cd /opt/airflow/dbt &&
+    rm -rf target &&
+    dbt build --profiles-dir .
+    """
+)
+    
+    sync_data >> check_freshness >> run_dbt

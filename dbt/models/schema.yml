@@ -2,14 +2,193 @@
 version: 2
 
 models:
-  - name: staging_cities
+
+# Adding description and tests for the staging_cities model.
+  - name: stg_cities
     description: "This model is responsible for staging the cities data from the raw layer.
         It performs basic transformations such as renaming columns, converting data types, and handling missing values to prepare the data for further analysis."
     columns:
-      - name: id
+      - name: city_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: city_name
+        description: "The name of the city"
+        tests:
+          - not_null
+
+      - name: country
+        description: "The country where the city is located"
+        tests:
+          - not_null
+      - name: launch_date
+        description: "The date when the city was launched for the ride-hailing service"
+        tests:
+          - not_null
+
+# Adding description and tests for the staging_drivers model.
+  - name: stg_drivers
+    description: "This model is responsible for staging the drivers data from the raw layer.
+        It performs basic transformations such as renaming columns, converting data types, and handling missing values to prepare the data for further analysis."
+    columns:
+      - name: driver_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+      - name: city_id
+        description: "The foreign key referencing the city where the driver operates"
+        tests:
+          - not_null
+
+      - name: created_at_timestamp
+        description: "The timestamp when the driver record was created"
+        tests:
+          - not_null
+
+      - name: updated_at_timestamp
+        description: "The timestamp when the driver record was last updated"
+        tests:
+          - not_null
+
+      - name: onboarding_date
+        description: "The date when the driver was onboarded to the platform"
+        tests:
+          - not_null
+
+      - name: vehicle_id
+        description: "The identifier for the vehicle used by the driver"
+        tests:
+          - not_null
+
+      - name: rating
+        description: "The average rating of the driver based on rider feedback"
+
+      - name: driver_status
+        description: "The current status of the driver (e.g., active, inactive, suspended)"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['active', 'inactive', 'suspended']
+
+    
+  # Adding description and tests for the staging_riders model.
+
+
+  - name: stg_riders
+    description: "This model is responsible for staging the riders data from the raw layer.
+        It performs basic transformations such as renaming columns, converting data types, and handling missing values to prepare the data for further analysis."
+    columns:
+      - name: rider_id
         description: "The primary key for this table"
         data_tests:
           - unique
           - not_null
 
-  
+      - name: country
+        description: "The country where the rider is located"
+        tests:
+          - not_null
+
+      - name: signup_date
+        description: "The date when the rider signed up for the service"
+        tests:
+            - not_null
+            
+      - name: referral_code
+        description: "The referral code used by the rider during signup, if any"
+
+   
+
+ # Adding description and tests for the staging_trips model.
+  - name: stg_trips
+    description: "This model is responsible for staging the trips data from the raw layer.
+              It performs basic transformations such as renaming columns, converting data types, 
+              and handling missing values to prepare the data for further analysis."
+    columns:
+      - name: trip_id
+        description: "The primary key for thE trips table"
+        tests:
+          - unique
+          - not_null
+
+      - name: driver_id
+        description: "The foreign key referencing the driver who completed the trip"
+        tests:
+          - not_null
+
+      - name: rider_id
+        description: "The foreign key referencing the rider who took the trip"
+        tests:
+          - not_null
+
+      - name: city_id
+        description: "The foreign key referencing the city where the trip took place"
+        tests:
+          - not_null
+
+      - name: pickup_at_timestamp
+        description: "The timestamp when the trip started"
+        tests:
+          - not_null
+
+      - name: dropoff_at_timestamp
+        description: "The timestamp when the trip ended"
+        tests:
+          - not_null
+
+      - name: actual_fare
+        description: "The total fare amount for the trip"
+        tests:
+          - not_null
+
+      - name: driver_id
+        tests:
+          - relationships:
+              to: ref('stg_drivers')
+              field: driver_id
+
+      - name: rider_id
+        tests:
+          - relationships:
+              to: ref('stg_riders')
+              field: rider_id
+
+      - name: city_id
+        tests:
+          - relationships:
+              to: ref('stg_cities')
+              field: city_id
+
+
+      - name: status
+        description: "The current status of the trip (e.g., completed, cancelled, no_show)"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['completed', 'cancelled', 'no_show']
+      
+      - name: payment_method
+        description: "The method of payment used for the trip (e.g., card, cash, wallet)"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['card', 'cash', 'wallet']
+
+      - name: is_corporate
+        description: "Indicates whether the trip was a corporate trip (true/false)"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
+      
+
+
+
+        
