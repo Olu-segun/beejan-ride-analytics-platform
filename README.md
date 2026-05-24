@@ -86,8 +86,8 @@ The staging layer standardizes and cleans raw data.
 - stg_trips
 - stg_drivers
 - stg_payments
-
 ---
+
 ### Intermediate Layer
 Contains reusable business logic and derived metrics.
 
@@ -99,8 +99,10 @@ Contains reusable business logic and derived metrics.
 - fraud indicators
 - failed payment detection
 - duplicate payment detection
-    - Reusable macros were created to standardize calculations and improve maintainability.
+
+Reusable macros were created to standardize calculations and improve maintainability.
 ---
+
 ### Marts Layer
 Implements a star schema for analytics consumption.
 
@@ -116,13 +118,16 @@ Implements a star schema for analytics consumption.
 
 The marts layer powers reporting and dashboarding use cases.
 ---
-Snapshots
+
+### Snapshots
 Implemented SCD Type 2 snapshots for drivers.
-Tracked changes:
+
+*Tracked changes:*
 - driver_status
 - vehicle_id
 - rating
-- Snapshotting enables historical tracking of driver state changes over time.
+
+Snapshotting enables historical tracking of driver state changes over time.
 
 ---
 ## Incremental Models
