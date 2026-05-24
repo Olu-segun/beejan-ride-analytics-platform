@@ -113,7 +113,8 @@ Implements a star schema for analytics consumption.
 - dim_riders
 - dim_cities
 - dim_date
-    - The marts layer powers reporting and dashboarding use cases.
+
+The marts layer powers reporting and dashboarding use cases.
 ---
 Snapshots
 Implemented SCD Type 2 snapshots for drivers.
