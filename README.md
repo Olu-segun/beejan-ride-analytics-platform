@@ -14,9 +14,9 @@ The platform ingests transactional ride data from a PostgreSQL operational datab
 -   **Corporate vs personal ride insights**
 
 ---
-Architecture
+## Architecture
 ---
-Technology Stack:
+## Technology Stack:
 
 | Tool           |	Purpose                         |
 |----------------|----------------------------------|
@@ -65,15 +65,15 @@ beejan-ride-analytics/
 ## Layered Modeling Approach
 ### Raw Layer
 Contains ingested source data from Airbyte without modifications.
-Examples:
-trips_raw
-drivers_raw
-riders_raw
-payments_raw
+**Examples:**
+- trips_raw
+- drivers_raw
+- riders_raw
+- payments_raw
 ---
 ### Staging Layer
 The staging layer standardizes and cleans raw data.
-Transformations include:
+**Transformations include:*
 - Column renaming to snake_case
 - Data type casting
 - Deduplication
