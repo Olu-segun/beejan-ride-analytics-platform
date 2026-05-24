@@ -14,9 +14,9 @@ The platform ingests transactional ride data from a PostgreSQL operational datab
 -   **Corporate vs personal ride insights**
 
 ---
-## Architecture
+## *Architecture*
 ---
-## Technology Stack:
+## *Technology Stack*
 
 | Tool           |	Purpose                         |
 |----------------|----------------------------------|
@@ -28,7 +28,7 @@ The platform ingests transactional ride data from a PostgreSQL operational datab
 | Git & GitHub   |  Version control                 |
 
 ---
-## Project Structure
+## *Project Structure*
 ```bash
 beejan-ride-analytics/
 │
@@ -52,7 +52,7 @@ beejan-ride-analytics/
 └── README.md
 ```
 ---
-## Data Flow
+## *Data Flow*
 - Transactional ride data is generated in PostgreSQL.
 - Airbyte extracts and loads raw tables into the Snowflake `RAW` schema.
 - dbt transforms the raw data into:
@@ -62,7 +62,7 @@ beejan-ride-analytics/
 - Apache Airflow orchestrates ingestion and transformation workflows.
 - Final marts support BI dashboards and analytics reporting.
 ---
-## Layered Modeling Approach
+## *Layered Modeling Approach:*
 ### Raw Layer
 Contains ingested source data from Airbyte without modifications.
 
