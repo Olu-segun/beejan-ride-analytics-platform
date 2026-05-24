@@ -129,7 +129,7 @@ Implemented logic includes:
 - fraud indicators
 - failed payment detection
 - duplicate payment detection
-    Reusable macros were created to standardize calculations and improve maintainability.
+    - Reusable macros were created to standardize calculations and improve maintainability.
 ---
 ### Marts Layer
 Implements a star schema for analytics consumption.
