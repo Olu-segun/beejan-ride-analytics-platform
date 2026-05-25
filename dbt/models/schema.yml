@@ -148,20 +148,23 @@ models:
       - name: driver_id
         tests:
           - relationships:
-              to: ref('stg_drivers')
-              field: driver_id
+              arguments:
+                to: ref('stg_drivers')
+                field: driver_id
 
       - name: rider_id
         tests:
           - relationships:
-              to: ref('stg_riders')
-              field: rider_id
+              arguments:
+                to: ref('stg_riders')
+                field: rider_id
 
       - name: city_id
         tests:
           - relationships:
-              to: ref('stg_cities')
-              field: city_id
+              arguments:
+                to: ref('stg_cities')
+                field: city_id
 
 
       - name: status

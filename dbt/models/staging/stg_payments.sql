@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'payment_id',
+    )
+}}
+
 WITH raw_payments AS (
     SELECT  *,
             ROW_NUMBER() OVER (PARTITION BY payment_id ORDER BY payment_id DESC) AS row_num
@@ -26,3 +33,7 @@ SELECT
         payment_status,
         payment_provider
 FROM renamed_columns
+
+{% if is_incremental() %}
+    WHERE payment_id >= (SELECT MAX(payment_id) FROM {{ this }})
+{% endif %}

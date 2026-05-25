@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized = 'table',
+    unique_key = 'trip_id',
+    )
+}}
+
 WITH raw_trips AS (
     SELECT  *,
             ROW_NUMBER() OVER (PARTITION BY trip_id ORDER BY trip_id DESC) AS row_num
@@ -42,3 +49,7 @@ SELECT
         payment_method,
         surge_multiplier
 FROM renamed_columns
+
+{% if is_incremental() %}
+    WHERE trip_id >= (SELECT MAX(trip_id) FROM {{ this }})
+{% endif %}

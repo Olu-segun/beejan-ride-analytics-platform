@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'event_id',
+    )
+}}
+
 With raw_drivers_status_events AS (
     SELECT *,
             ROW_NUMBER() OVER (PARTITION BY event_id ORDER BY event_id DESC )   AS row_num
@@ -17,4 +24,7 @@ renamed_columns AS (
             driver_id,
             event_timestamp
     FROM renamed_columns
-
+    
+    {% if is_incremental() %}
+        WHERE event_id >= (SELECT MAX(event_id) FROM {{ this }})
+    {% endif %}
