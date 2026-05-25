@@ -1,4 +1,4 @@
-# BeejanRide Analytics Platform
+# *BeejanRide Analytics Platform*
 
 ## 📌 *Project Overview*
 BeejanRide is a UK-based mobility startup providing ride-hailing, airport transfers, and scheduled corporate rides across multiple cities. This project implements a production-grade analytics engineering platform using the modern data stack.
@@ -134,15 +134,15 @@ Snapshotting enables historical tracking of driver state changes over time.
 ---
 
 ## *Incremental Models*
-    Incremental materialization was implemented for high-volume datasets such as:
+Incremental materialization was implemented for high-volume datasets such as:
 ***stg_driver_status_events_raw, stg_trips and stg_payments***
 
-### Why Incremental Models ?
+### *Why Incremental Models* ?
 Incremental models reduce processing time and warehouse costs by only loading new or updated records instead of rebuilding entire tables.
 
 ---
 
-## Tradeoffs
+# *Tradeoffs*
 | Full Refresh	  | Incremental                           |
 |-----------------|---------------------------------------|
 | Simpler logic	  | Faster execution                      |
@@ -151,22 +151,36 @@ Incremental models reduce processing time and warehouse costs by only loading ne
 | Better for small| datasets	Better for large datasets |
 
 ---
-Data Quality
-Generic Tests
-Implemented:
-not_null
-unique
-relationships
-accepted_values
-Custom Tests
-Implemented:
-No negative revenue
-Trip duration greater than zero
-Completed trips must have successful payments
-Freshness Checks
-Configured freshness validation:
-trips_raw must be less than 2 hours old
+# ***Data Quality***
+
+## Generic Tests
+
+*Implemented:*
+-   not_null
+-   unique
+-   relationships
+-   accepted_values
+
+## Custom Tests
+
+*Implemented:*
+-   No negative revenue
+-   Trip duration greater than zero
+-   Completed trips must have successful payments
+-   Freshness Checks
+
+## Configured Freshness Validation
+
+The following source tables have freshness monitoring configured using `_AIRBYTE_EXTRACTED_AT` as the ingestion timestamp:
+
+- `trips_raw`
+- `payments_raw`
+
+*Freshness rules:*
+- Warning threshold: data older than 1 day
+- Error threshold: data older than 2 days
 ---
+
 Documentation & Governance
 The project includes:
 Model descriptions
@@ -182,12 +196,13 @@ Generated artifacts:
 dbt documentation site
 lineage graph
 ---
-## Orchestration
+## ***Orchestration***
 Pipeline orchestration was implemented using Apache Airflow.
+
 **The Airflow DAG performs:**
 - Airbyte ingestion trigger
-- dbt transformation execution
-- Data quality validation
+- Source Freshness Check
+- dbt transformation execution and Data quality validation
 
 ### Example workflow:
 ```text
