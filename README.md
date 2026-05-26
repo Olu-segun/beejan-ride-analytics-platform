@@ -54,11 +54,11 @@ beejan-ride-analytics/
 ---
 ## *Data Flow*
 - `Transactional ride data is generated in PostgreSQL.`
-- `Airbyte extracts and loads raw tables into the Snowflake **RAW** schema.`
+- `Airbyte extracts and loads raw tables into the Snowflake RAW schema.`
 - `dbt transforms the raw data into:
-- Staging models
-- Intermediate business logic models
-- Fact and dimension marts
+    - Staging models
+    - Intermediate business logic models
+    - Fact and dimension marts
 - Apache Airflow orchestrates ingestion and transformation workflows.
 - Final marts support BI dashboards and analytics reporting.
 ---
