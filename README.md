@@ -62,7 +62,7 @@ beejan-ride-analytics/
 - Apache Airflow orchestrates ingestion and transformation workflows.
 - Final marts support BI dashboards and analytics reporting.
 ---
-## *Layered Modeling Approach:*
+## *Layered Modeling Approach*
 ### Raw Layer
 Contains ingested source data from Airbyte without modifications.
 
@@ -135,7 +135,9 @@ Snapshotting enables historical tracking of driver state changes over time.
 
 ## *Incremental Models*
 Incremental materialization was implemented for high-volume datasets such as:
-***stg_driver_status_events_raw, stg_trips and stg_payments***
+- `stg_driver_status_events, 
+- `stg_trips`
+- `stg_payments`
 
 ### *Why Incremental Models* ?
 Incremental models reduce processing time and warehouse costs by only loading new or updated records instead of rebuilding entire tables.
@@ -175,6 +177,7 @@ The following source tables have freshness monitoring configured using `_AIRBYTE
 
 - `trips_raw`
 - `payments_raw`
+- `driver_status_events_raw`
 
 *Freshness rules:*
 - Warning threshold: data older than 1 day
