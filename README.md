@@ -192,6 +192,7 @@ Generated artifacts:
 dbt documentation site
 lineage graph
 ---
+
 ## ***Orchestration***
 Pipeline orchestration was implemented using Apache Airflow.
 
@@ -264,24 +265,26 @@ WHERE trip_status = 'completed'
 AND payment_status = 'failed';
 ```
 ---
-## Key Design Decisions
-### Why dbt?
+# *Key Design Decisions*
+
+## Why dbt ?
 dbt enables modular SQL transformations, testing, documentation, lineage tracking, and analytics engineering best practices.
 
-### Why Snowflake?
+## Why Snowflake?
 Snowflake provides scalable cloud warehousing with separation of storage and compute.
 
-### Why Airflow?
+## Why Airflow?
 Airflow enables production-grade orchestration and scheduling of ingestion and transformation workflows.
 
-### Why Layered Architecture?
+## *Why Layered Architecture* ?
 **The layered approach improves**:
 - maintainability
 - modularity
 - reusability
 - scalability
 ---
-### Future Improvements
+# *Future Improvements*
+
 **Potential future enhancements:**
 - CI/CD pipeline using GitHub Actions
 - Real-time streaming ingestion
@@ -291,18 +294,6 @@ Airflow enables production-grade orchestration and scheduling of ingestion and t
 - Infrastructure as Code (Terraform)
 - Role-based warehouse governance
 ---
-Deliverables
-Completed deliverables:
-Public GitHub repository
-dbt project implementation
-Airflow orchestration DAG
-Data quality tests
-Incremental models
-Snapshots
-Documentation
-Lineage graph
-Analytical queries
----
-Author
-Olusegun Olukayode
-Data Analyst | Analytics Engineer
+
+
+
