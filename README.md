@@ -270,10 +270,10 @@ AND payment_status = 'failed';
 ## Why dbt ?
 dbt enables modular SQL transformations, testing, documentation, lineage tracking, and analytics engineering best practices.
 
-## Why Snowflake?
+## Why Snowflake ?
 Snowflake provides scalable cloud warehousing with separation of storage and compute.
 
-## Why Airflow?
+## Why Airflow ?
 Airflow enables production-grade orchestration and scheduling of ingestion and transformation workflows.
 
 ## *Why Layered Architecture* ?
