@@ -135,7 +135,7 @@ Snapshotting enables historical tracking of driver state changes over time.
 
 ## *Incremental Models*
 Incremental materialization was implemented for high-volume datasets such as:
-- `stg_driver_status_events, 
+- `stg_driver_status_events`
 - `stg_trips`
 - `stg_payments`
 
