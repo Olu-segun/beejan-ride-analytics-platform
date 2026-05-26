@@ -32,7 +32,7 @@ The platform ingests transactional ride data from a PostgreSQL operational datab
 ```bash
 beejan-ride-analytics/
 │
-├── airflow/
+├── airflow-dag/
 │   └── orchestration.py
 │
 ├── dbt/
@@ -67,38 +67,38 @@ beejan-ride-analytics/
 Contains ingested source data from Airbyte without modifications.
 
 *Examples:*
-- trips_raw
-- drivers_raw
-- riders_raw
-- payments_raw
+- `trips_raw`
+- `drivers_raw`
+- `riders_raw
+- `payments_raw`
 ---
 ### Staging Layer
 The staging layer standardizes and cleans raw data.
 
 *Transformations include:*
-- Column renaming to snake_case
-- Data type casting
-- Deduplication
-- Timestamp standardization
-- Null primary key removal
+- `Column renaming to snake_case`
+- `Data type casting`
+- `Deduplication`
+- `Timestamp standardization`
+- `Null primary key removal`
 
 *Examples:*
-- stg_trips
-- stg_drivers
-- stg_payments
+- `stg_trips`
+- `stg_drivers`
+- `stg_payments`
 ---
 
 ### Intermediate Layer
 Contains reusable business logic and derived metrics.
 
 *Implemented logic includes:*
-- trip_duration_minutes
-- rider_lifetime_value
-- driver_lifetime_trips
-- net_revenue
-- fraud indicators
-- failed payment detection
-- duplicate payment detection
+- `trip_duration_minutes`
+- `rider_lifetime_value`
+- `driver_lifetime_trips`
+- `net_revenue`
+- `fraud indicators`
+- `failed payment detection`
+- `duplicate payment detection`
 
 Reusable macros were created to standardize calculations and improve maintainability.
 
@@ -108,14 +108,14 @@ Reusable macros were created to standardize calculations and improve maintainabi
 Implements a star schema for analytics consumption.
 
 *Fact Tables:*
-- fact_trips
-- fact_payments
+- `fact_trips`
+- `fact_payments`
 
 *Dimension Tables:*
-- dim_drivers
-- dim_riders
-- dim_cities
-- dim_date
+- `dim_drivers`
+- `dim_riders`
+- `dim_cities`
+- `dim_date`
 
 The marts layer powers reporting and dashboarding use cases.
 
@@ -125,9 +125,9 @@ The marts layer powers reporting and dashboarding use cases.
 Implemented SCD Type 2 snapshots for drivers.
 
 *Tracked changes:*
-- driver_status
-- vehicle_id
-- rating
+- `driver_status`
+- `vehicle_id`
+- `rating`
 
 Snapshotting enables historical tracking of driver state changes over time.
 
