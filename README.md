@@ -55,12 +55,12 @@ beejan-ride-analytics/
 ## *Data Flow*
 - `Transactional ride data is generated in PostgreSQL.`
 - `Airbyte extracts and loads raw tables into the Snowflake RAW schema.`
-- `dbt transforms the raw data into:
+- `dbt transforms the raw data into`:
     - Staging models
     - Intermediate business logic models
     - Fact and dimension marts
-- Apache Airflow orchestrates ingestion and transformation workflows.
-- Final marts support BI dashboards and analytics reporting.
+- `Apache Airflow orchestrates ingestion and transformation workflows.`
+- `Final marts support BI dashboards and analytics reporting.`
 ---
 ## *Layered Modeling Approach*
 ### Raw Layer
@@ -71,7 +71,7 @@ Contains ingested source data from Airbyte without modifications.
 - `drivers_raw`
 - `riders_raw`
 - `payments_raw`
----
+
 ### Staging Layer
 The staging layer standardizes and cleans raw data.
 
@@ -86,7 +86,6 @@ The staging layer standardizes and cleans raw data.
 - `stg_trips`
 - `stg_drivers`
 - `stg_payments`
----
 
 ### Intermediate Layer
 Contains reusable business logic and derived metrics.
@@ -101,8 +100,6 @@ Contains reusable business logic and derived metrics.
 - `duplicate payment detection`
 
 Reusable macros were created to standardize calculations and improve maintainability.
-
----
 
 ### Marts Layer
 Implements a star schema for analytics consumption.
@@ -119,8 +116,6 @@ Implements a star schema for analytics consumption.
 
 The marts layer powers reporting and dashboarding use cases.
 
----
-
 ### Snapshots
 Implemented SCD Type 2 snapshots for drivers.
 
@@ -130,8 +125,6 @@ Implemented SCD Type 2 snapshots for drivers.
 - `rating`
 
 Snapshotting enables historical tracking of driver state changes over time.
-
----
 
 ## *Incremental Models*
 Incremental materialization was implemented for high-volume datasets such as:
