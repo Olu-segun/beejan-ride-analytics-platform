@@ -6,12 +6,12 @@ BeejanRide is a UK-based mobility startup providing ride-hailing, airport transf
 The platform ingests transactional ride data from a PostgreSQL operational database into a cloud data warehouse using Airbyte, transforms and models the data using dbt, and orchestrates workflows using Apache Airflow.
 
 ### The final warehouse supports analytics use cases such as:
--   **Daily revenue reporting**
--   **Driver performance monitoring**
--   **Rider lifetime value analysis**
--   **Fraud detection**
--   **Payment reliability analysis**
--   **Corporate vs personal ride insights**
+-   `Daily revenue reporting`
+-   `Driver performance monitoring`
+-   `Rider lifetime value analysis`
+-   `Fraud detection`
+-   `Payment reliability analysis`
+-   `Corporate vs personal ride insights`
 
 ---
 ## *Architecture*
@@ -53,9 +53,9 @@ beejan-ride-analytics/
 ```
 ---
 ## *Data Flow*
-- Transactional ride data is generated in PostgreSQL.
-- Airbyte extracts and loads raw tables into the Snowflake `RAW` schema.
-- dbt transforms the raw data into:
+- `Transactional ride data is generated in PostgreSQL.`
+- `Airbyte extracts and loads raw tables into the Snowflake `RAW` schema.`
+- `dbt transforms the raw data into:
 - Staging models
 - Intermediate business logic models
 - Fact and dimension marts
@@ -69,7 +69,7 @@ Contains ingested source data from Airbyte without modifications.
 *Examples:*
 - `trips_raw`
 - `drivers_raw`
-- `riders_raw
+- `riders_raw`
 - `payments_raw`
 ---
 ### Staging Layer
