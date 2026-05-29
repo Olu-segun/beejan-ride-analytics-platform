@@ -106,6 +106,10 @@ models:
     description: "This model is responsible for staging the trips data from the raw layer.
               It performs basic transformations such as renaming columns, converting data types, 
               and handling missing values to prepare the data for further analysis."
+    tests:
+      - completed_trip_has_successful_payment:
+          description: "Ensures that all completed trips have a successful payment"
+
     columns:
       - name: trip_id
         description: "The primary key for thE trips table"
@@ -226,3 +230,5 @@ models:
           - no_negative_revenue:
               arguments:
                 column_name: net_revenue
+
+  
