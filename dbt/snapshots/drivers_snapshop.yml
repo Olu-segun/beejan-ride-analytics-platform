@@ -1,0 +1,12 @@
+version: 2
+
+snapshots:
+  - name: drivers_snapshot
+    relation: ref('stg_drivers')
+    description: "Snapshot to track changes in drivers' records over time."
+    config:
+      target_database: "{{ target.database }}"
+      target_schema: snapshots
+      unique_key: driver_id
+      strategy: timestamp
+      updated_at: updated_at_timestamp
