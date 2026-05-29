@@ -28,6 +28,13 @@ with DAG(
     dbt source freshness --profiles-dir .
     """
 )
+    snapshot_dbt = BashOperator(
+    task_id="snapshot_dbt",
+    bash_command="""
+    cd /opt/airflow/dbt &&
+    dbt snapshot --profiles-dir .
+    """
+)
 
     run_dbt = BashOperator(
     task_id="run_dbt",
@@ -38,4 +45,4 @@ with DAG(
     """
 )
     
-    sync_data >> check_freshness >> run_dbt
+    sync_data >> check_freshness >> snapshot_dbt >> run_dbt

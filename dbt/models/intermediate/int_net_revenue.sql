@@ -24,6 +24,5 @@ SELECT
     t.is_corporate,
     t.city_id,
     p.amount AS net_revenue
-
 FROM completed_trips t
 INNER JOIN successful_payments p ON t.trip_id = p.trip_id

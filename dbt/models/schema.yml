@@ -76,8 +76,6 @@ models:
 
     
   # Adding description and tests for the staging_riders model.
-
-
   - name: stg_riders
     description: "This model is responsible for staging the riders data from the raw layer.
         It performs basic transformations such as renaming columns, converting data types, and handling missing values to prepare the data for further analysis."
@@ -192,6 +190,39 @@ models:
                 values: [true, false]
       
 
+# Adding description and tests for the intermediate model that calculates trip duration in minutes.
+  - name: int_trips_duration_minutes
+    description: "This model calculates the duration of each trip in minutes by taking the difference between the dropoff and pickup timestamps. 
+                  It also filters out any trips with non-positive durations to ensure data quality for further analysis."
+    columns:
+      - name: trip_id
+        description: "The primary key for this table, referencing the trip_id from stg_trips"
+        tests:
+          - unique
+          - not_null
+
+      - name: duration_minutes
+        description: "The duration of the trip in minutes, calculated as the difference between dropoff and pickup timestamps"
+        tests:
+          - not_null
+          - positive_duration:
+              arguments:
+                column_name: duration_minutes
 
 
-        
+  # Adding description and tests for the intermediate model that calculates net revenue.
+  - name: int_net_revenue
+    description: "This model calculates the total revenue generated from each trip by summing the actual fare. It also filters out any trips with negative revenue to ensure data quality for further analysis."
+    columns:
+      - name: trip_id
+        description: "The primary key for this table, referencing the trip_id from stg_trips"
+        tests:
+          - unique
+          - not_null
+      - name: net_revenue
+        description: "The total revenue generated from the trip, calculated as the actual fare"
+        tests:
+          - not_null
+          - no_negative_revenue:
+              arguments:
+                column_name: net_revenue
