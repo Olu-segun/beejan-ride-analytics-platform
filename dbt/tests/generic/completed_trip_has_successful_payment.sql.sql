@@ -23,6 +23,6 @@ SELECT
 FROM completed_trips ct
 LEFT JOIN successful_payments sp
     ON ct.trip_id = sp.trip_id
-WHERE sp.trip_id IS NULL
+WHERE sp.trip_id IS NULL 
 
 {% endtest %}

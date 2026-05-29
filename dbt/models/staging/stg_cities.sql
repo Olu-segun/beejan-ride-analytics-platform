@@ -11,7 +11,7 @@ WITH raw_cities AS (
         COUNTRY AS country,
         CITY_NAME AS city_name,
         LAUNCH_DATE AS launch_date,
-    FROM {{ source('beejan_ride_dbt', 'cities_raw') }}
+    FROM {{ source('raw', 'cities_raw') }}
 
 ),
 deduplicated AS (

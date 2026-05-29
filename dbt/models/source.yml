@@ -1,93 +1,103 @@
 version: 2
 
 sources:
-  - name: beejan_ride_dbt
+  - name: raw
+    description: >
+      This source represents the raw data ingested from various sources.
     database: beejanride_db
     schema: raw
 
     tables:
       - name: cities_raw
         identifier: CITIES_RAW
-        description: "This table contains the raw data for cities, including city_id, 
-            city_name,country and launch_date."
+        description: >
+          This table contains the raw data for cities,
+          including city_id, city_name, country and launch_date.
         tests:
           - not_null:
               column_name: city_id
-          
+
       - name: drivers_raw
         identifier: DRIVERS_RAW
-        description: "This table contains the raw data for drivers, including driver_id, 
-                    driver_name, and contact information."
+        description: >
+          This table contains the raw data for drivers,
+          including driver_id, driver_name, and contact information.
         tests:
-            - not_null:
-                column_name: driver_id
-            
+          - not_null:
+              column_name: driver_id
 
       - name: riders_raw
         identifier: RIDERS_RAW
-        description: "This table contains the raw data for riders, including rider_id, 
-                    rider_name, and contact information."
+        description: >
+          This table contains the raw data for riders,
+          including rider_id, rider_name, and contact information.
         tests:
           - not_null:
               column_name: rider_id
-          
+
       - name: driver_status_events_raw
         identifier: DRIVER_STATUS_EVENTS_RAW
-        description: "This table contains the raw data for driver status events, 
-              including event_id, driver_id, event_type, and timestamp."
+        description: >
+          This table contains the raw data for driver status events,
+          including event_id, driver_id, event_type, and timestamp.
+
+        config:
+          loaded_at_field: _airbyte_extracted_at
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 2, period: day}
+
         tests:
           - not_null:
               column_name: event_id
-        config:
-          loaded_at_field: _airbyte_extracted_at
-          freshness:
-            warn_after: {count: 1, period: day}
-            error_after: {count: 2, period: day}
-              
-
 
       - name: payments_raw
         identifier: PAYMENTS_RAW
-        description: "This table contains the raw data for payments, including payment_id, 
-              amount, and timestamp."
-        tests:
-          - not_null:
-              column_name: payment_id
-          - not_null:
-              column_name: amount
+        description: >
+          This table contains the raw data for payments,
+          including payment_id, amount, and timestamp.
+
         config:
           loaded_at_field: _airbyte_extracted_at
           freshness:
             warn_after: {count: 1, period: day}
             error_after: {count: 2, period: day}
 
-          
+        tests:
+          - not_null:
+              column_name: payment_id
+
+          - not_null:
+              column_name: amount
 
       - name: trips_raw
         identifier: TRIPS_RAW
-        description: "This table contains the raw data for trips, including trip_id, 
-          driver_id, rider_id, city_id, start_time, end_time, and fare_amount."
+        description: >
+          This table contains the raw data for trips,
+          including trip_id, driver_id, rider_id,
+          city_id, start_time, end_time, and fare_amount.
+
+        config:
+          loaded_at_field: _airbyte_extracted_at
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 2, period: day}
+
         tests:
           - not_null:
               column_name: trip_id
+
           - not_null:
               column_name: status
+
           - not_null:
               column_name: city_id
+
           - not_null:
               column_name: vehicle_id
+
           - not_null:
               column_name: payment_method
+
           - not_null:
               column_name: pickup_at
-        config:
-          loaded_at_field: _airbyte_extracted_at  
-          freshness:                       
-            warn_after: {count: 1, period: day}
-            error_after: {count: 2, period: day}
-            
-        
-          
-            
-
-

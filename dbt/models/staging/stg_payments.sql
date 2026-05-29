@@ -16,7 +16,7 @@ WITH raw_payments AS (
         PAYMENT_ID AS payment_id,
         PAYMENT_STATUS AS payment_status,
         PAYMENT_PROVIDER AS payment_provider
-    FROM {{ source('beejan_ride_dbt', 'payments_raw') }}
+    FROM {{ source('raw', 'payments_raw') }}
 
     {% if is_incremental() %}
 

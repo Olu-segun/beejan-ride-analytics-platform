@@ -10,7 +10,7 @@ WITH raw_riders AS (
         TO_TIMESTAMP(CREATED_AT) AS created_at_timestamp,
         SIGNUP_DATE   AS signup_date,
         REFERRAL_CODE AS referral_code,
-    FROM {{ source('beejan_ride_dbt', 'riders_raw') }}
+    FROM {{ source('raw', 'riders_raw') }}
 ),
 deduplicated AS (
     SELECT

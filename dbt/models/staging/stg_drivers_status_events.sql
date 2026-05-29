@@ -12,7 +12,7 @@ WITH raw_drivers_status_events AS (
         EVENT_ID AS event_id,
         DRIVER_ID AS driver_id,
         EVENT_TIMESTAMP AS event_timestamp
-    FROM {{ source('beejan_ride_dbt', 'driver_status_events_raw') }}
+    FROM {{ source('raw', 'driver_status_events_raw') }}
 
     {% if is_incremental() %}
     WHERE EVENT_TIMESTAMP >

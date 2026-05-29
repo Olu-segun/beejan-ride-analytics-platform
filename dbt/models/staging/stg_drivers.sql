@@ -14,7 +14,7 @@ WITH raw_drivers AS (
         VEHICLE_ID      AS vehicle_id,
         DRIVER_STATUS   AS driver_status,
         ONBOARDING_DATE AS onboarding_date,
-    FROM {{ source('beejan_ride_dbt', 'drivers_raw') }}
+    FROM {{ source('raw', 'drivers_raw') }}
 ),
 deduplicated AS (
     SELECT

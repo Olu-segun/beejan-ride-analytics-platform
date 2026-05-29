@@ -25,7 +25,7 @@ WITH raw_trips AS (
         ESTIMATED_FARE AS estimated_fare,
         PAYMENT_METHOD AS payment_method,
         SURGE_MULTIPLIER AS surge_multiplier
-    FROM {{ source('beejan_ride_dbt', 'trips_raw') }}
+    FROM {{ source('raw', 'trips_raw') }}
 
     {% if is_incremental() %}
     WHERE (updated_at_timestamp) >= (SELECT COALESCE(MAX(updated_at_timestamp),'1900-01-01')
