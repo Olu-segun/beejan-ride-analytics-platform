@@ -206,7 +206,8 @@ Pipeline orchestration was implemented using Apache Airflow.
 
 ### Example workflow:
 ``text
-sync_data >> check_freshness >> run_dbt ```
+sync_data >> check_freshness >> run_dbt 
+```
 
 <img src="images/airflow_dag.png" alt="Architecture Diagram" width="800">
 
@@ -224,17 +225,14 @@ Start Docker Environment
 ```bash
 docker compose up -d
 ```
----
 Run dbt Models
 ```bash
 dbt build
 ```
----
 Run Tests
 ```bash
 dbt test
 ```
----
 Generate Documentation
 ```bash
 dbt docs generate
@@ -252,7 +250,6 @@ FROM marts.fact_trips
 GROUP BY 1,2
 ORDER BY 2 DESC;
 ```
----
 Top Drivers by Revenue
 ```sql
 SELECT
@@ -263,7 +260,6 @@ GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 10;
 ```
----
 Failed Payments on Completed Trips
 ```sql
 SELECT *
