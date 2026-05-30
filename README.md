@@ -212,11 +212,10 @@ Pipeline orchestration was implemented using Apache Airflow.
 ```text
 sync_data >> check_freshness >> run_dbt
 
-```
-
 <img src="images/airflow_dag.png" alt="Architecture Diagram" width="800">
 ---
-Running the Project
+
+```Running the Project
 Clone Repository
 ```bash
 git clone https://github.com/yourusername/beejan-ride-analytics.git
