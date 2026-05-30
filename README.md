@@ -14,7 +14,7 @@ The platform ingests transactional ride data from a PostgreSQL operational datab
 -   `Corporate vs personal ride insights`
 
 ---
-## *Architecture*
+## *Architecture Diagram
 <img src="images/architecture_diagram.png" alt="Architecture Diagram" width="800">
 
 ---
