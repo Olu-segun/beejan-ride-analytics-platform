@@ -34,7 +34,7 @@ The platform ingests transactional ride data from a PostgreSQL operational datab
 ```bash
 beejan-ride-analytics/
 │
-├── airflow-dag/
+├── airflow-dags/
 │   └── orchestration.py
 │
 ├── dbt/
@@ -107,14 +107,13 @@ Reusable macros were created to standardize calculations and improve maintainabi
 Implements a star schema for analytics consumption.
 
 *Fact Tables:*
-- `fact_trips`
-- `fact_payments`
+- `fct_trips`
+- `fct_payments`
 
 *Dimension Tables:*
 - `dim_drivers`
 - `dim_riders`
 - `dim_cities`
-- `dim_date`
 
 The marts layer powers reporting and dashboarding use cases.
 
@@ -184,20 +183,16 @@ The lineage graph below illustrates the dependencies between sources, staging mo
 
 <img src="images/dbt_lineage.png" alt="dbt Lineage Diagram" width="800">
 ---
-Documentation & Governance
-The project includes:
-Model descriptions
-Column descriptions
-Business metric definitions
-Tags
-Owner metadata
-Tags used:
-finance
-operations
-fraud
-Generated artifacts:
-dbt documentation site
-lineage graph
+
+# ***Documentation & Governance***
+## The project includes:
+- Model descriptions
+- Column descriptions
+- Business metric definitions
+
+## Generated artifacts:
+- dbt documentation site
+- lineage graph
 ---
 
 ## ***Orchestration***
@@ -212,7 +207,7 @@ Pipeline orchestration was implemented using Apache Airflow.
 ```text
 sync_data >> check_freshness >> run_dbt
 
-<img src="images/airflow_dag.png" alt="Architecture Diagram" width="800">
+<img src="images/airflow_dag.png" alt="Architecture Diagram" width="800">```
 ---
 
 ```Running the Project
