@@ -182,6 +182,7 @@ The following source tables have freshness monitoring configured using `_AIRBYTE
 The lineage graph below illustrates the dependencies between sources, staging models, intermediate layer and marts layer
 
 <img src="images/dbt_lineage.png" alt="dbt Lineage Diagram" width="800">
+
 ---
 
 # ***Documentation & Governance***
@@ -204,16 +205,18 @@ Pipeline orchestration was implemented using Apache Airflow.
 - dbt transformation execution and Data quality validation
 
 ### Example workflow:
-```text
+``text
 sync_data >> check_freshness >> run_dbt 
 
 <img src="images/airflow_dag.png" alt="Architecture Diagram" width="800">
+
 ---
 
 Running the Project
 Clone Repository
 ```bash
 git clone https://github.com/yourusername/beejan-ride-analytics.git
+
 cd beejan-ride-analytics
 ```
 ---
