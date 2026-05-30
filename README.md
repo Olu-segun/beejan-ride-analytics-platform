@@ -15,6 +15,8 @@ The platform ingests transactional ride data from a PostgreSQL operational datab
 
 ---
 ## *Architecture*
+<img src="images/architecture_diagram.png" alt="Architecture Diagram" width="600">
+
 ---
 ## *Technology Stack*
 
@@ -176,7 +178,12 @@ The following source tables have freshness monitoring configured using `_AIRBYTE
 - Warning threshold: data older than 1 day
 - Error threshold: data older than 2 days
 ---
+# ***Project Lineage***
+## dbt Lineage Graph
+The lineage graph below illustrates the dependencies between sources, staging models, intermediate layer and marts layer
 
+<img src="images/dbt_lineage.png" alt="dbt Lineage Diagram" width="600">
+---
 Documentation & Governance
 The project includes:
 Model descriptions
@@ -204,7 +211,10 @@ Pipeline orchestration was implemented using Apache Airflow.
 ### Example workflow:
 ```text
 sync_data >> check_freshness >> run_dbt
+
 ```
+
+<img src="images/airflow_dag.png" alt="Architecture Diagram" width="600">
 ---
 Running the Project
 Clone Repository
