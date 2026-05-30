@@ -206,7 +206,7 @@ Pipeline orchestration was implemented using Apache Airflow.
 
 ### Example workflow:
 ``text
-sync_data >> check_freshness >> run_dbt 
+sync_data >> check_freshness >> run_dbt ```
 
 <img src="images/airflow_dag.png" alt="Architecture Diagram" width="800">
 
