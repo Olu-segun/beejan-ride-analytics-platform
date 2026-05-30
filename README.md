@@ -205,12 +205,12 @@ Pipeline orchestration was implemented using Apache Airflow.
 
 ### Example workflow:
 ```text
-sync_data >> check_freshness >> run_dbt
+sync_data >> check_freshness >> run_dbt 
 
-<img src="images/airflow_dag.png" alt="Architecture Diagram" width="800">```
+<img src="images/airflow_dag.png" alt="Architecture Diagram" width="800">
 ---
 
-```Running the Project
+Running the Project
 Clone Repository
 ```bash
 git clone https://github.com/yourusername/beejan-ride-analytics.git
