@@ -15,7 +15,7 @@ The platform ingests transactional ride data from a PostgreSQL operational datab
 
 ---
 ## *Architecture*
-<img src="images/architecture_diagram.png" alt="Architecture Diagram" width="600">
+<img src="images/architecture_diagram.png" alt="Architecture Diagram" width="800">
 
 ---
 ## *Technology Stack*
@@ -182,7 +182,7 @@ The following source tables have freshness monitoring configured using `_AIRBYTE
 ## dbt Lineage Graph
 The lineage graph below illustrates the dependencies between sources, staging models, intermediate layer and marts layer
 
-<img src="images/dbt_lineage.png" alt="dbt Lineage Diagram" width="600">
+<img src="images/dbt_lineage.png" alt="dbt Lineage Diagram" width="800">
 ---
 Documentation & Governance
 The project includes:
@@ -214,7 +214,7 @@ sync_data >> check_freshness >> run_dbt
 
 ```
 
-<img src="images/airflow_dag.png" alt="Architecture Diagram" width="600">
+<img src="images/airflow_dag.png" alt="Architecture Diagram" width="800">
 ---
 Running the Project
 Clone Repository
