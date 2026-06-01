@@ -240,7 +240,8 @@ dbt docs serve
 ```
 ---
 Sample Analytical Queries
-Daily Revenue by City
+
+Revenue by City
 ```sql
 SELECT 
         dc.city_id,
