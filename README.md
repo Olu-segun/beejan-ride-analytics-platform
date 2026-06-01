@@ -242,30 +242,34 @@ dbt docs serve
 Sample Analytical Queries
 Daily Revenue by City
 ```sql
-SELECT
-    city_name,
-    trip_date,
-    SUM(net_revenue) AS total_revenue
-FROM marts.fact_trips
-GROUP BY 1,2
-ORDER BY 2 DESC;
+SELECT 
+        dc.city_id,
+        dc.city_name,
+        SUM(ft.net_revenue) AS total_revenue
+FROM BEEJANRIDE_DB.MARTS.DIM_CITIES dc
+INNER JOIN BEEJANRIDE_DB.MARTS.FCT_TRIPS ft
+USING (city_id)
+WHERE trip_status = 'completed'
+GROUP BY    dc.city_id,
+            dc.city_name
+ORDER BY total_revenue DESC;
 ```
-Top Drivers by Revenue
+Top 3 Drivers by Revenue
 ```sql
-SELECT
-    driver_id,
-    SUM(net_revenue) AS revenue
-FROM marts.fact_trips
-GROUP BY 1
-ORDER BY 2 DESC
-LIMIT 10;
+SELECT 
+        driver_id,
+        SUM(COALESCE(NET_REVENUE,0) ) AS revenue
+FROM BEEJANRIDE_DB.MARTS.FCT_TRIPS
+GROUP BY driver_id
+ORDER BY revenue DESC
+LIMIT 3;
 ```
 Failed Payments on Completed Trips
 ```sql
-SELECT *
-FROM marts.fact_payments
-WHERE trip_status = 'completed'
-AND payment_status = 'failed';
+SELECT
+        *
+FROM BEEJANRIDE_DB.MARTS.FCT_TRIPS
+WHERE failed_payment_completed_trip_flag = true
 ```
 ---
 # *Key Design Decisions*
