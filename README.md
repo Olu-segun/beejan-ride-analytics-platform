@@ -239,7 +239,7 @@ dbt docs generate
 dbt docs serve
 ```
 ---
-Sample Analytical Queries
+*Sample Analytical Queries*
 
 Revenue by City
 ```sql
