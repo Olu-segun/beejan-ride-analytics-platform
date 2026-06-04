@@ -13,7 +13,7 @@ completed_trips AS (
         is_corporate,
         city_id
     FROM {{ ref('stg_trips') }}
-    WHERE status = 'completed'
+    WHERE trip_status = 'completed'
 )
 
 SELECT

@@ -22,7 +22,7 @@ SELECT
     END AS extreme_surge_flag,
 
     CASE
-        WHEN t.status = 'completed'
+        WHEN t.trip_status = 'completed'
              AND p.failed_attempts > 0
              AND p.successful_attempts = 0
         THEN TRUE

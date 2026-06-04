@@ -5,7 +5,7 @@ WITH completed_trips AS (
     SELECT
         trip_id
     FROM {{ model }}
-    WHERE status = 'completed'
+    WHERE trip_status = 'completed'
 
 ),
 

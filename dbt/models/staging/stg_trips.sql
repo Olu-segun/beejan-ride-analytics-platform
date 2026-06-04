@@ -9,7 +9,7 @@
 WITH raw_trips AS (
 
     SELECT
-        STATUS AS status,
+        STATUS AS trip_status,
         CITY_ID AS city_id,
         TRIP_ID AS trip_id,
         RIDER_ID AS rider_id,
@@ -43,7 +43,7 @@ deduplicated AS (
 
 )
 SELECT 
-    status,
+    trip_status,
     city_id,
     trip_id,
     rider_id,

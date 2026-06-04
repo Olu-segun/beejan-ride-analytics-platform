@@ -21,7 +21,7 @@ SELECT
     t.payment_method,
     t.surge_multiplier,
     t.is_corporate,
-    t.status,
+    t.trip_status,
     td.duration_minutes,
     nr.net_revenue,
     tf.failed_payment_completed_trip_flag,

@@ -1,2 +1,3 @@
 apache-airflow-providers-airbyte>=5.0.0
 dbt-snowflake
+pip install apache-airflow-providers-smtp

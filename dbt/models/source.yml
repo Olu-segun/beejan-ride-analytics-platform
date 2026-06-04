@@ -44,8 +44,8 @@ sources:
         config:
           loaded_at_field: _airbyte_extracted_at
           freshness:
-            warn_after: {count: 1, period: day}
-            error_after: {count: 2, period: day}
+            warn_after: {count: 1, period: hour}
+            error_after: {count: 2, period: hour}
 
         tests:
           - not_null:
@@ -60,8 +60,8 @@ sources:
         config:
           loaded_at_field: _airbyte_extracted_at
           freshness:
-            warn_after: {count: 1, period: day}
-            error_after: {count: 2, period: day}
+            warn_after: {count: 1, period: hour}
+            error_after: {count: 2, period: hour}
 
         tests:
           - not_null:
@@ -80,8 +80,8 @@ sources:
         config:
           loaded_at_field: _airbyte_extracted_at
           freshness:
-            warn_after: {count: 1, period: day}
-            error_after: {count: 2, period: day}
+            warn_after: {count: 1, period: hour}
+            error_after: {count: 2, period: hour}
 
         tests:
           - not_null:

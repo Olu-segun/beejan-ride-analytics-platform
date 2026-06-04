@@ -169,7 +169,7 @@ models:
                 field: city_id
 
 
-      - name: status
+      - name: trip_status
         description: "The current status of the trip (e.g., completed, cancelled, no_show)"
         tests:
           - not_null
@@ -232,3 +232,28 @@ models:
                 column_name: net_revenue
 
   
+# Add description and tests for the intermediate model that calculates fraud signals for each trip.
+  - name: int_trip_fraud_signals
+    description: "This model identifies potential fraud signals for each trip based on criteria such as extreme surge pricing and failed payment attempts. It flags trips that meet these criteria to help with fraud detection and prevention efforts."
+    columns:
+      - name: trip_id
+        description: "The primary key for this table, referencing the trip_id from stg_trips"
+        tests:
+          - unique
+          - not_null
+
+      - name: extreme_surge_flag
+        description: "A boolean flag indicating whether the trip had an extreme surge multiplier (greater than 3)"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
+
+      - name: failed_payment_completed_trip_flag
+        description: "A boolean flag indicating whether a completed trip had failed payment attempts without any successful payments"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
