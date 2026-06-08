@@ -270,8 +270,10 @@ This monitoring capability helps ensure rapid detection and resolution of pipeli
 
 ---
 
-Running the Project
+# ***Running the Project***
+
 Clone Repository
+
 ```bash
 git clone https://github.com/yourusername/beejan-ride-analytics.git
 
