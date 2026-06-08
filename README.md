@@ -215,9 +215,10 @@ sync_data >> check_freshness >> dbt_snapshot >> run_dbt
 Apache Airflow was configured with SMTP-based notifications to provide operational monitoring of pipeline executions.
 
 ### *Implemented Alerts*
-        The pipeline automatically sends email notifications when:
-- The DAG completes successfully
-- The DAG fails
+The pipeline automatically sends email notifications when:
+
+        - The DAG completes successfully
+        - The DAG fails
 
 ### *Notification Configuration*
 
@@ -232,7 +233,8 @@ When the entire pipeline completes successfully, an email notification is sent c
         - Execution Date
         - Success status
 
-```Example subject:
+```
+Example subject:
 
 Success✅ The Dag beejan-ride-analytics Succeeded - Date.
 
@@ -246,9 +248,11 @@ When any task failure causes the DAG run to fail, an email notification is sent 
         - Execution Date
         - Failure status
 
-```Example subject:
+```
+Example subject:
 
 Error❌ The Dag beejan-ride-analytics Failed - Date.
+
 ```
 
 ### *When a DAG fails or successed:*
