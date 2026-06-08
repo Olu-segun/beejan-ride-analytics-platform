@@ -207,6 +207,7 @@ Pipeline orchestration was implemented using Apache Airflow.
 ### Example workflow:
 ```text
 sync_data >> check_freshness >> dbt_snapshot >> run_dbt
+
 ```
 ---
 #  ***Monitoring & Alerting***
@@ -232,7 +233,7 @@ When the entire pipeline completes successfully, an email notification is sent c
 
 ```Example subject:
 
-* Success✅ The Dag beejan-ride-analytics Succeeded - Date *
+Success✅ The Dag beejan-ride-analytics Succeeded - Date.
 
 ```
 ### *Failure Alert*
@@ -246,7 +247,7 @@ When any task failure causes the DAG run to fail, an email notification is sent 
 
 ```Example subject:
 
-* Error❌ The Dag beejan-ride-analytics Failed - Date *
+Error❌ The Dag beejan-ride-analytics Failed - Date.
 ```
 
 When a DAG fails or successed:
