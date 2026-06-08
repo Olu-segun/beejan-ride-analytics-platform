@@ -226,6 +226,7 @@ Airflow SMTP Notifiers are configured at the DAG level using ```on_success_callb
 ### *Success Alert*
 
 When the entire pipeline completes successfully, an email notification is sent containing:
+
         - DAG name
         - Run_ID
         - Execution Date
@@ -250,14 +251,14 @@ When any task failure causes the DAG run to fail, an email notification is sent 
 Error❌ The Dag beejan-ride-analytics Failed - Date.
 ```
 
-When a DAG fails or successed:
+### *When a DAG fails or successed:*
 
-1. Airflow captures the failure event
-2. SMTP notifier triggers automatically
-3. An email alert is sent to the configured recipient
-4. Logs can be reviewed directly from the Airflow UI
+        - Airflow captures the failure or success event
+        - SMTP notifier triggers automatically
+        - An email alert is sent to the configured recipient
+        - Logs can be reviewed directly from the Airflow UI
 
-### Example Alert
+### *Example Alert*
 
 <img src="images/airflow_email_alert.png" alt="Airflow Email Alert" width="800">
 
