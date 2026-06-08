@@ -208,8 +208,59 @@ Pipeline orchestration was implemented using Apache Airflow.
 ```text
 sync_data >> check_freshness >> dbt_snapshot >> run_dbt
 ```
+---
+#  ***Monitoring & Alerting***
 
-<img src="images/airflow_dag.png" alt="Architecture Diagram" width="800">
+Apache Airflow was configured with SMTP-based notifications to provide operational monitoring of pipeline executions.
+
+### *Implemented Alerts*
+        The pipeline automatically sends email notifications when:
+- The DAG completes successfully
+- The DAG fails
+
+### *Notification Configuration*
+
+Airflow SMTP Notifiers are configured at the DAG level using ```on_success_callback``` and ```on_failure_callback```.
+
+### *Success Alert*
+
+When the entire pipeline completes successfully, an email notification is sent containing:
+        - DAG name
+        - Run_ID
+        - Execution Date
+        - Success status
+
+```Example subject:
+
+* Success✅ The Dag beejan-ride-analytics Succeeded - Date *
+
+```
+### *Failure Alert*
+
+When any task failure causes the DAG run to fail, an email notification is sent containing:
+
+        - DAG name
+        - Run_ID
+        - Execution Date
+        - Failure status
+
+```Example subject:
+
+* Error❌ The Dag beejan-ride-analytics Failed - Date *
+```
+
+When a DAG fails or successed:
+
+1. Airflow captures the failure event
+2. SMTP notifier triggers automatically
+3. An email alert is sent to the configured recipient
+4. Logs can be reviewed directly from the Airflow UI
+
+### Example Alert
+
+<img src="images/airflow_email_alert.png" alt="Airflow Email Alert" width="800">
+
+This monitoring capability helps ensure rapid detection and resolution of pipeline failures in production environments.
 
 ---
 
